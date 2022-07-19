@@ -120,58 +120,134 @@
 // Console.Write($" - > {difference}");
 
 
-Console.Clear();
+// Console.Clear();
 
-double[,] GetArray(int m, int n, int minValue, int maxValue)
+// double[,] GetArray(int m, int n, int minValue, int maxValue)
+// {
+//     double[,] result = new double[m, n];
+//     for (int i = 0; i < m; i++)
+//     {
+//         for (int j = 0; j < n; j++)
+//         {
+//             result[i, j] = new Random().Next(minValue, maxValue + 1);
+//         }
+//     }
+//     return result;
+// }
+
+// void PrintArray(double[,] inArray)
+// {
+//     for (int row = 0; row < inArray.GetLength(0); row++)
+//     {
+//         for (int column = 0; column < inArray.GetLength(1); column++)
+//         {
+//             Console.Write($"\t {inArray[row, column]} ");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+
+// void changedArray(double[,] inArray)
+// {
+
+//     for (int i = 0; i < inArray.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < inArray.GetLength(1); j++)
+//         {
+//             if (i % 2 == 0 && j % 2 == 0)
+//             {
+//                 inArray[i, j] = Math.Pow(inArray[i, j], 2);
+//             }
+//             Console.Write($"\t {inArray[i, j]}");
+//         }
+//         Console.WriteLine();
+//     }
+
+// }
+
+// Console.Write("Введите количество строк массива: ");
+// int rows = Convert.ToInt32(Console.ReadLine());
+
+// Console.Write("Введите количество столбцов массива: ");
+// int columns = Convert.ToInt32(Console.ReadLine());
+
+// double[,] array = GetArray(rows, columns, 0, 10);
+// PrintArray(array);
+// Console.WriteLine();
+// changedArray(array);
+
+// int[,] GetArray(int m, int n, int minValue, int maxValue)
+// {
+//     int[,] result = new int[m, n];
+//     for (int i = 0; i < m; i++)
+//     {
+//         for (int j = 0; j < n; j++)
+//         {
+//             result[i, j] = new Random().Next(minValue, maxValue + 1);
+//         }
+//     }
+//     return result;
+// }
+
+// void PrintArray(int[,] inArray)
+// {
+//     for (int i = 0; i < inArray.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < inArray.GetLength(1); j++)
+//         {
+//             Console.Write($"{inArray[i, j]} ");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+// Console.Write("Введите количество строк массива: ");
+// int rows = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Введите количество столбцов массива: ");
+// int columns = Convert.ToInt32(Console.ReadLine());
+// int[,] array = GetArray(rows, columns, 2, 10);
+// PrintArray(array);
+// Console.WriteLine("----------------------- ");
+
+// void NewArray(int[,] inArray)
+// {
+//     int k = inArray.GetLength(0) - 1;
+//     for (int i = 0; i < inArray.GetLength(1); i++)
+//     {
+//         int n = inArray[0, i];
+//         inArray[0, i] = inArray[k, i];
+//         inArray[k, i] = n;
+//     }
+//     PrintArray(inArray);
+// }
+// NewArray(array);
+
+int i, n, c;
+Console.WriteLine("Введите нужное количество строк треугольника Паскаля:");
+string s = Console.ReadLine()!;
+n = Convert.ToInt32(s);
+
+float factorial(int n)
 {
-    double[,] result = new double[m, n];
-    for (int i = 0; i < m; i++)
+    float i, x = 1;
+    for (i = 1; i <= n; i++)
     {
-        for (int j = 0; j < n; j++)
-        {
-            result[i, j] = new Random().Next(minValue, maxValue + 1);
-        }
+        x *= i;
     }
-    return result;
+    return x;
 }
 
-void PrintArray(double[,] inArray)
+for (i = 0; i < n; i++)
 {
-    for (int row = 0; row < inArray.GetLength(0); row++)
+    for (c = 0; c <= (n - i); c++) // создаём после каждой строки n-i отступов от левой стороны консоли, чем ниже строка, тем меньше отступ
     {
-        for (int column = 0; column < inArray.GetLength(1); column++)
-        {
-            Console.Write($"\t {inArray[row, column]} ");
-        }
-        Console.WriteLine();
+        Console.Write(" ");
     }
-}
-
-void changedArray(double[,] inArray)
-{
-
-    for (int i = 0; i < inArray.GetLength(0); i++)
+    for (c = 0; c <= i; c++)
     {
-        for (int j = 0; j < inArray.GetLength(1); j++)
-        {
-            if (i % 2 == 0 && j % 2 == 0)
-            {
-                inArray[i, j] = Math.Pow(inArray[i, j], 2);
-            }
-            Console.Write($"\t {inArray[i, j]}");
-        }
-        Console.WriteLine();
+        Console.Write(" "); // создаём пробелы между элементами треугольника
+        Console.Write(factorial(i) / (factorial(c) * factorial(i - c))); //формула вычисления элементов треугольника
     }
-
+    Console.WriteLine();
+    Console.WriteLine(); // после каждой строки с числами отступаем две пустые строчки
+    Console.ReadLine();
 }
-
-Console.Write("Введите количество строк массива: ");
-int rows = Convert.ToInt32(Console.ReadLine());
-
-Console.Write("Введите количество столбцов массива: ");
-int columns = Convert.ToInt32(Console.ReadLine());
-
-double[,] array = GetArray(rows, columns, 0, 10);
-PrintArray(array);
-Console.WriteLine();
-changedArray(array);
